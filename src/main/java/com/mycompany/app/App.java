@@ -77,10 +77,14 @@ public class App
           java.util.Scanner sc5 = new java.util.Scanner(input5);
           sc5.useDelimiter("[;\r\n]+");
           int int2 = Integer.parseInt(sc5.next().replaceAll("\\s",""));
-
+          java.util.ArrayList<String> result;
           sc5.close();
-
-          ArrayList<String> result = App.changeLetter(inputList1,inputList2,inputList3,int1,int2);
+          if(input1.equals("") || input2.equals("") || input3.equals("") || input4.equals("") || input5.equals("")){
+             result=new ArrayList<>();
+             result.add("Missing input or inputs, result is cannot be shown");
+          }
+          else
+             result = App.changeLetter(inputList1,inputList2,inputList3,int1,int2);
 
           Map map = new HashMap();
           map.put("result", result);
