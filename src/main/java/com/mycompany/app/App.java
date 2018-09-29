@@ -24,11 +24,20 @@ public class App
         post("/compute", (req, res) -> {
           //System.out.println(req.queryParams("input1"));
           //System.out.println(req.queryParams("input2"));
-
+          java.util.ArrayList<String> result=new ArrayList<>();
+          java.util.ArrayList<Integer> inputList1 = new java.util.ArrayList<>();
+          java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
+          java.util.ArrayList<String> inputList3 = new java.util.ArrayList<>();
+          int int1=0;
+          int int2=0;
           String input1=req.queryParams("input1");
           java.util.Scanner sc1 = new java.util.Scanner(input1);
+          if(input1.equals("")){
+              inputList1=null;
+          }
+          else{
           sc1.useDelimiter("[;\r\n]+");
-          java.util.ArrayList<Integer> inputList1 = new java.util.ArrayList<>();
+          
 
           while (sc1.hasNext())
           {
@@ -38,12 +47,16 @@ public class App
           }
 
           sc1.close();
-
+        }
           String input2 = req.queryParams("input2");
          
           java.util.Scanner sc2 = new java.util.Scanner(input2);
+          if(input2.equals("")){
+            inputList2=null;
+        }
+        else{
           sc2.useDelimiter("[;\r\n]+");
-          java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
+          
 
           while (sc2.hasNext())
           {
@@ -52,11 +65,15 @@ public class App
           }
 
           sc2.close();
-
+        }
           String input3 = req.queryParams("input3");
           
           java.util.Scanner sc3 = new java.util.Scanner(input3);
-          java.util.ArrayList<String> inputList3 = new java.util.ArrayList<>();
+          if(input3.equals("")){
+            inputList3=null;
+        }
+        else{
+          
 
           while (sc3.hasNext())
           {
@@ -65,26 +82,26 @@ public class App
           }
 
           sc3.close();
-
+        }
           String input4 = req.queryParams("input4");
           java.util.Scanner sc4 = new java.util.Scanner(input4);
+          if(!input4.equals(""))
+          {
           sc4.useDelimiter("[;\r\n]+");
-          int int1 = Integer.parseInt(sc4.next().replaceAll("\\s",""));
-
+            int1 = Integer.parseInt(sc4.next().replaceAll("\\s",""));
+          
           sc4.close();
-
+        }
           String input5 = req.queryParams("input5");
           java.util.Scanner sc5 = new java.util.Scanner(input5);
+          if(!input5.equals("")){
           sc5.useDelimiter("[;\r\n]+");
-          int int2 = Integer.parseInt(sc5.next().replaceAll("\\s",""));
-          java.util.ArrayList<String> result;
+           int2 = Integer.parseInt(sc5.next().replaceAll("\\s",""));
+          
           sc5.close();
-          if(input1.equals("") || input2.equals("") || input3.equals("") || input4.equals("") || input5.equals("")){
-             result=new ArrayList<>();
-             result.add("Missing input or inputs, result is cannot be shown");
           }
-          else
-             result = App.changeLetter(inputList1,inputList2,inputList3,int1,int2);
+          
+             result=App.changeLetter(inputList1,inputList2,inputList3,int1,int2);
 
           Map map = new HashMap();
           map.put("result", result);
