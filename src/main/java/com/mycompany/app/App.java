@@ -100,8 +100,10 @@ public class App
           
           sc5.close();
           }
-          
-             result=App.changeLetter(inputList1,inputList2,inputList3,int1,int2);
+            if(inputList1==null || inputList2==null || inputList3==null)
+                result.add("Missing input or inputs, result is cannot be shown");
+            else
+                result=App.changeLetter(inputList1,inputList2,inputList3,int1,int2);
 
           Map map = new HashMap();
           map.put("result", result);
